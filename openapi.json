@@ -1,0 +1,2620 @@
+{
+  "openapi": "3.0.2",
+  "info": { "title": "Evreka 360 API", "version": "v1.0.0" },
+  "paths": {
+    "/asset/list": {
+      "get": {
+        "tags": ["Asset"],
+        "summary": "Asset List",
+        "operationId": "asset_list_asset_list_get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": {
+              "title": "Page",
+              "minimum": 0.0,
+              "type": "integer",
+              "default": 0
+            },
+            "name": "page",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "Limit",
+              "maximum": 100.0,
+              "minimum": 1.0,
+              "type": "integer",
+              "default": 100
+            },
+            "name": "limit",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/AssetListSchema" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        },
+        "security": [{ "OAuth2PasswordBearer": [] }]
+      }
+    },
+    "/asset/detail/{asset_id}": {
+      "get": {
+        "tags": ["Asset"],
+        "summary": "Asset Detail",
+        "operationId": "asset_detail_asset_detail__asset_id__get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": { "title": "Asset Id", "type": "integer" },
+            "name": "asset_id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/AssetDetailSchema" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        },
+        "security": [{ "OAuth2PasswordBearer": [] }]
+      }
+    },
+    "/asset/types": {
+      "get": {
+        "tags": ["Asset"],
+        "summary": "Asset Type List",
+        "operationId": "asset_type_list_asset_types_get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": {
+              "title": "Page",
+              "minimum": 0.0,
+              "type": "integer",
+              "default": 0
+            },
+            "name": "page",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "Limit",
+              "maximum": 100.0,
+              "minimum": 1.0,
+              "type": "integer",
+              "default": 100
+            },
+            "name": "limit",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/AssetTypeListSchema" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/asset/installation-types": {
+      "get": {
+        "tags": ["Asset"],
+        "summary": "Asset Installation Type List",
+        "operationId": "asset_installation_type_list_asset_installation_types_get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": {
+              "title": "Page",
+              "minimum": 0.0,
+              "type": "integer",
+              "default": 0
+            },
+            "name": "page",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "Limit",
+              "maximum": 100.0,
+              "minimum": 1.0,
+              "type": "integer",
+              "default": 100
+            },
+            "name": "limit",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AssetInstallationTypeListSchema"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        },
+        "security": [{ "OAuth2PasswordBearer": [] }]
+      }
+    },
+    "/asset/waste-types": {
+      "get": {
+        "tags": ["Asset"],
+        "summary": "Asset Waste Type List",
+        "operationId": "asset_waste_type_list_asset_waste_types_get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": {
+              "title": "Page",
+              "minimum": 0.0,
+              "type": "integer",
+              "default": 0
+            },
+            "name": "page",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "Limit",
+              "maximum": 100.0,
+              "minimum": 1.0,
+              "type": "integer",
+              "default": 100
+            },
+            "name": "limit",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AssetWasteTypeListSchema"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        },
+        "security": [{ "OAuth2PasswordBearer": [] }]
+      }
+    },
+    "/asset/statuses": {
+      "get": {
+        "tags": ["Asset"],
+        "summary": "Asset Status List",
+        "operationId": "asset_status_list_asset_statuses_get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": {
+              "title": "Page",
+              "minimum": 0.0,
+              "type": "integer",
+              "default": 0
+            },
+            "name": "page",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "Limit",
+              "maximum": 100.0,
+              "minimum": 1.0,
+              "type": "integer",
+              "default": 100
+            },
+            "name": "limit",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AssetStatusListSchema"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        },
+        "security": [{ "OAuth2PasswordBearer": [] }]
+      }
+    },
+    "/asset/status-locations": {
+      "get": {
+        "tags": ["Asset"],
+        "summary": "Asset Status Location List",
+        "operationId": "asset_status_location_list_asset_status_locations_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AssetStatusLocationListSchema"
+                }
+              }
+            }
+          }
+        },
+        "security": [{ "OAuth2PasswordBearer": [] }]
+      }
+    },
+    "/asset/activities/list": {
+      "get": {
+        "tags": ["Asset"],
+        "summary": "Asset Activity List",
+        "operationId": "asset_activity_list_asset_activities_list_get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": {
+              "title": "Page",
+              "minimum": 0.0,
+              "type": "integer",
+              "default": 0
+            },
+            "name": "page",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "Limit",
+              "maximum": 100.0,
+              "minimum": 1.0,
+              "type": "integer",
+              "default": 100
+            },
+            "name": "limit",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AssetActivityListSchema"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        },
+        "security": [{ "OAuth2PasswordBearer": [] }]
+      }
+    },
+    "/asset/activities/categories": {
+      "get": {
+        "tags": ["Asset"],
+        "summary": "Asset Activity Category List",
+        "operationId": "asset_activity_category_list_asset_activities_categories_get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": {
+              "title": "Page",
+              "minimum": 0.0,
+              "type": "integer",
+              "default": 0
+            },
+            "name": "page",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "Limit",
+              "maximum": 100.0,
+              "minimum": 1.0,
+              "type": "integer",
+              "default": 100
+            },
+            "name": "limit",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AssetActivityCategoryListSchema"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        },
+        "security": [{ "OAuth2PasswordBearer": [] }]
+      }
+    },
+    "/asset/activities/types": {
+      "get": {
+        "tags": ["Asset"],
+        "summary": "Asset Activity Type List",
+        "operationId": "asset_activity_type_list_asset_activities_types_get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": {
+              "title": "Page",
+              "minimum": 0.0,
+              "type": "integer",
+              "default": 0
+            },
+            "name": "page",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "Limit",
+              "maximum": 100.0,
+              "minimum": 1.0,
+              "type": "integer",
+              "default": 100
+            },
+            "name": "limit",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AssetActivityTypeListSchema"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        },
+        "security": [{ "OAuth2PasswordBearer": [] }]
+      }
+    },
+    "/engagement/financial_details": {
+      "get": {
+        "tags": ["Engagement"],
+        "summary": "Financial Detail List",
+        "operationId": "financial_detail_list_engagement_financial_details_get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": {
+              "title": "Order Type Id",
+              "type": "string",
+              "format": "uuid"
+            },
+            "name": "order_type_id",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "Order Item Id",
+              "type": "string",
+              "format": "uuid"
+            },
+            "name": "order_item_id",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "Entity Id",
+              "type": "string",
+              "format": "uuid"
+            },
+            "name": "entity_id",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "Service Point Id",
+              "type": "string",
+              "format": "uuid"
+            },
+            "name": "service_point_id",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FinancialDetailListSchema"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        },
+        "security": [{ "OAuth2PasswordBearer": [] }]
+      }
+    },
+    "/engagement/orders": {
+      "post": {
+        "tags": ["Engagement"],
+        "summary": "Create Order",
+        "operationId": "create_order_engagement_orders_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/OrderRequest" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/OrderSchema" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        },
+        "security": [{ "OAuth2PasswordBearer": [] }]
+      }
+    },
+    "/engagement/orders/{order_id}": {
+      "delete": {
+        "tags": ["Engagement"],
+        "summary": "Delete Order",
+        "operationId": "delete_order_engagement_orders__order_id__delete",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Order Id",
+              "type": "string",
+              "format": "uuid"
+            },
+            "name": "order_id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        },
+        "security": [{ "OAuth2PasswordBearer": [] }]
+      }
+    },
+    "/engagement/orders/{order_id}/status": {
+      "put": {
+        "tags": ["Engagement"],
+        "summary": "Update Order Status",
+        "operationId": "update_order_status_engagement_orders__order_id__status_put",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Order Id",
+              "type": "string",
+              "format": "uuid"
+            },
+            "name": "order_id",
+            "in": "path"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_update_order_status_engagement_orders__order_id__status_put"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        },
+        "security": [{ "OAuth2PasswordBearer": [] }]
+      }
+    },
+    "/engagement/orders/status": {
+      "get": {
+        "tags": ["Engagement"],
+        "summary": "Get Status List",
+        "operationId": "get_status_list_engagement_orders_status_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
+        },
+        "security": [{ "OAuth2PasswordBearer": [] }]
+      }
+    },
+    "/engagement/orders/dynamic_fields": {
+      "get": {
+        "tags": ["Engagement"],
+        "summary": "Get Order Dynamic Fields",
+        "operationId": "get_order_dynamic_fields_engagement_orders_dynamic_fields_get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": {
+              "title": "Type Id",
+              "type": "string",
+              "format": "uuid"
+            },
+            "name": "type_id",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "Template Id",
+              "type": "string",
+              "format": "uuid"
+            },
+            "name": "template_id",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        },
+        "security": [{ "OAuth2PasswordBearer": [] }]
+      }
+    },
+    "/engagement/order_settings": {
+      "get": {
+        "tags": ["Engagement"],
+        "summary": "Order Settings",
+        "operationId": "order_settings_engagement_order_settings_get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": { "title": "Service Point Id", "type": "string" },
+            "name": "service_point_id",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": { "title": "Entity Id", "type": "string" },
+            "name": "entity_id",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderSettingsListSchema"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        },
+        "security": [{ "OAuth2PasswordBearer": [] }]
+      }
+    },
+    "/engagement/service_points": {
+      "get": {
+        "tags": ["Engagement"],
+        "summary": "Service Point List",
+        "operationId": "service_point_list_engagement_service_points_get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": {
+              "title": "Type Id",
+              "type": "string",
+              "format": "uuid"
+            },
+            "name": "type_id",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "Entity Id",
+              "type": "string",
+              "format": "uuid"
+            },
+            "name": "entity_id",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": { "title": "Name", "type": "string" },
+            "name": "name",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "Order Types",
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "name": "order_types",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "Order Items",
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "name": "order_items",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "Page",
+              "minimum": 0.0,
+              "type": "integer",
+              "default": 0
+            },
+            "name": "page",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "Limit",
+              "maximum": 100.0,
+              "minimum": 1.0,
+              "type": "integer",
+              "default": 100
+            },
+            "name": "limit",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServicePointListSchema"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        },
+        "security": [{ "OAuth2PasswordBearer": [] }]
+      }
+    },
+    "/engagement/service_points/dynamic_fields": {
+      "get": {
+        "tags": ["Engagement"],
+        "summary": "Get Service Point Dynamic Fields",
+        "operationId": "get_service_point_dynamic_fields_engagement_service_points_dynamic_fields_get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": {
+              "title": "Type Id",
+              "type": "string",
+              "format": "uuid"
+            },
+            "name": "type_id",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DynamicFieldListSchema"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        },
+        "security": [{ "OAuth2PasswordBearer": [] }]
+      }
+    },
+    "/engagement/service_points/status": {
+      "get": {
+        "tags": ["Engagement"],
+        "summary": "Get Status List",
+        "operationId": "get_status_list_engagement_service_points_status_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServicePointStatusListSchema"
+                }
+              }
+            }
+          }
+        },
+        "security": [{ "OAuth2PasswordBearer": [] }]
+      }
+    },
+    "/engagement/service_points/{service_point_id}": {
+      "get": {
+        "tags": ["Engagement"],
+        "summary": "Service Point Detail",
+        "operationId": "service_point_detail_engagement_service_points__service_point_id__get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Service Point Id",
+              "type": "string",
+              "format": "uuid"
+            },
+            "name": "service_point_id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServicePointDetailsSchema"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        },
+        "security": [{ "OAuth2PasswordBearer": [] }]
+      }
+    },
+    "/engagement/entities": {
+      "get": {
+        "tags": ["Engagement"],
+        "summary": "Entity List",
+        "operationId": "entity_list_engagement_entities_get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": {
+              "title": "Type Id",
+              "type": "string",
+              "format": "uuid"
+            },
+            "name": "type_id",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": { "title": "Name", "type": "string" },
+            "name": "name",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "Order Types",
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "name": "order_types",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "Order Items",
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "name": "order_items",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "Page",
+              "minimum": 0.0,
+              "type": "integer",
+              "default": 0
+            },
+            "name": "page",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "Limit",
+              "maximum": 100.0,
+              "minimum": 1.0,
+              "type": "integer",
+              "default": 100
+            },
+            "name": "limit",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/EntityListSchema" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        },
+        "security": [{ "OAuth2PasswordBearer": [] }]
+      }
+    },
+    "/engagement/entities/dynamic_fields": {
+      "get": {
+        "tags": ["Engagement"],
+        "summary": "Get Entity Dynamic Fields",
+        "operationId": "get_entity_dynamic_fields_engagement_entities_dynamic_fields_get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": {
+              "title": "Type Id",
+              "type": "string",
+              "format": "uuid"
+            },
+            "name": "type_id",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DynamicFieldListSchema"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        },
+        "security": [{ "OAuth2PasswordBearer": [] }]
+      }
+    },
+    "/engagement/entities/status": {
+      "get": {
+        "tags": ["Engagement"],
+        "summary": "Get Status List",
+        "operationId": "get_status_list_engagement_entities_status_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityStatusListSchema"
+                }
+              }
+            }
+          }
+        },
+        "security": [{ "OAuth2PasswordBearer": [] }]
+      }
+    },
+    "/engagement/entities/{entity_id}": {
+      "get": {
+        "tags": ["Engagement"],
+        "summary": "Entity Detail",
+        "operationId": "entity_detail_engagement_entities__entity_id__get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Entity Id",
+              "type": "string",
+              "format": "uuid"
+            },
+            "name": "entity_id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/EntityDetailsSchema" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        },
+        "security": [{ "OAuth2PasswordBearer": [] }]
+      }
+    },
+    "/engagement/contacts": {
+      "get": {
+        "tags": ["Engagement"],
+        "summary": "Contact List",
+        "operationId": "contact_list_engagement_contacts_get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": {
+              "title": "Entity Id",
+              "type": "string",
+              "format": "uuid"
+            },
+            "name": "entity_id",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": { "title": "Name", "type": "string" },
+            "name": "name",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": { "title": "Surname", "type": "string" },
+            "name": "surname",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": { "title": "Email", "type": "string" },
+            "name": "email",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": { "title": "Phone", "type": "string" },
+            "name": "phone",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "Page",
+              "minimum": 0.0,
+              "type": "integer",
+              "default": 0
+            },
+            "name": "page",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "Limit",
+              "maximum": 100.0,
+              "minimum": 1.0,
+              "type": "integer",
+              "default": 100
+            },
+            "name": "limit",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ContactListSchema" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        },
+        "security": [{ "OAuth2PasswordBearer": [] }]
+      },
+      "post": {
+        "tags": ["Engagement"],
+        "summary": "Create Contact",
+        "operationId": "create_contact_engagement_contacts_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/ContactRequest" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateContactResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        },
+        "security": [{ "OAuth2PasswordBearer": [] }]
+      }
+    },
+    "/engagement/contacts/{contact_id}": {
+      "put": {
+        "tags": ["Engagement"],
+        "summary": "Update Contact",
+        "operationId": "update_contact_engagement_contacts__contact_id__put",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Contact Id",
+              "type": "string",
+              "format": "uuid"
+            },
+            "name": "contact_id",
+            "in": "path"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/UpdateContactRequest" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        },
+        "security": [{ "OAuth2PasswordBearer": [] }]
+      }
+    },
+    "/engagement/cases": {
+      "post": {
+        "tags": ["Engagement"],
+        "summary": "Create Case",
+        "operationId": "create_case_engagement_cases_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/CreateCaseRequest" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Create Case Engagement Cases Post",
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        },
+        "security": [{ "OAuth2PasswordBearer": [] }]
+      }
+    },
+    "/engagement/cases/case_types": {
+      "get": {
+        "tags": ["Engagement"],
+        "summary": "Get Case Types",
+        "operationId": "get_case_types_engagement_cases_case_types_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/CaseTypesResponse" }
+              }
+            }
+          }
+        },
+        "security": [{ "OAuth2PasswordBearer": [] }]
+      }
+    },
+    "/engagement/service_availability": {
+      "post": {
+        "tags": ["Engagement"],
+        "summary": "External Available Dates",
+        "operationId": "external_available_dates_engagement_service_availability_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExternalAvailableDatesRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AvailableDatesResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        },
+        "security": [{ "OAuth2PasswordBearer": [] }]
+      }
+    },
+    "/fleet/weighing": {
+      "post": {
+        "tags": ["Fleet"],
+        "summary": "Fleet Weighing",
+        "operationId": "fleet_weighing_fleet_weighing_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/FleetWeighingRequest" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/modules__fleet__schemas__TraceResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/fleet/location": {
+      "post": {
+        "tags": ["Fleet"],
+        "summary": "Fleet Location",
+        "operationId": "fleet_location_fleet_location_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/FleetLocationRequest" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/modules__fleet__schemas__TraceResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        },
+        "security": [{ "OAuth2PasswordBearer": [] }]
+      }
+    },
+    "/environment/waste_types": {
+      "get": {
+        "tags": ["Environment"],
+        "summary": "Get Waste Types",
+        "operationId": "get_waste_types_environment_waste_types_get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": { "title": "Name Contains", "type": "string" },
+            "name": "name_contains",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "Page",
+              "minimum": 0.0,
+              "type": "integer",
+              "default": 0
+            },
+            "name": "page",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "Limit",
+              "maximum": 100.0,
+              "minimum": 1.0,
+              "type": "integer",
+              "default": 100
+            },
+            "name": "limit",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/WasteTypeListSchema" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        },
+        "security": [{ "OAuth2PasswordBearer": [] }]
+      }
+    },
+    "/device/record/weighing": {
+      "post": {
+        "tags": ["Device"],
+        "summary": "Create Activity",
+        "description": "If transaction_id exists, it will be used to create the new activity from the last activity which has same transaction_id and only given parameters will be updated.",
+        "operationId": "create_activity_device_record_weighing_post",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_create_activity_device_record_weighing_post"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/modules__device__activity__schemas__TraceResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        },
+        "security": [{ "OAuth2PasswordBearer": [] }]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AssetActivityCategoryListSchema": {
+        "title": "AssetActivityCategoryListSchema",
+        "type": "object",
+        "properties": {
+          "items": {
+            "title": "Items",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AssetActivityCategorySchema"
+            },
+            "default": []
+          }
+        }
+      },
+      "AssetActivityCategorySchema": {
+        "title": "AssetActivityCategorySchema",
+        "required": ["id", "name", "enum"],
+        "type": "object",
+        "properties": {
+          "id": { "title": "Id", "type": "integer" },
+          "name": { "title": "Name", "type": "string" },
+          "enum": { "title": "Enum", "type": "string" }
+        }
+      },
+      "AssetActivityListSchema": {
+        "title": "AssetActivityListSchema",
+        "type": "object",
+        "properties": {
+          "items": {
+            "title": "Items",
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/AssetActivitySchema" },
+            "default": []
+          }
+        }
+      },
+      "AssetActivitySchema": {
+        "title": "AssetActivitySchema",
+        "required": [
+          "id",
+          "asset_id",
+          "created_at",
+          "recorded_at",
+          "type_id",
+          "type_enum",
+          "category_id",
+          "category_enum",
+          "source_module",
+          "source_id"
+        ],
+        "type": "object",
+        "properties": {
+          "id": { "title": "Id", "type": "string" },
+          "asset_id": { "title": "Asset Id", "type": "integer" },
+          "created_at": { "title": "Created At", "type": "string" },
+          "recorded_at": { "title": "Recorded At", "type": "string" },
+          "type_id": { "title": "Type Id", "type": "integer" },
+          "type_enum": { "title": "Type Enum", "type": "string" },
+          "category_id": { "title": "Category Id", "type": "integer" },
+          "category_enum": { "title": "Category Enum", "type": "string" },
+          "source_module": { "title": "Source Module", "type": "string" },
+          "source_id": { "title": "Source Id", "type": "string" },
+          "before_value": { "title": "Before Value", "type": "number" },
+          "after_value": { "title": "After Value", "type": "number" },
+          "latitude": { "title": "Latitude", "type": "number" },
+          "longitude": { "title": "Longitude", "type": "number" }
+        }
+      },
+      "AssetActivityTypeListSchema": {
+        "title": "AssetActivityTypeListSchema",
+        "type": "object",
+        "properties": {
+          "items": {
+            "title": "Items",
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/AssetActivityTypeSchema" },
+            "default": []
+          }
+        }
+      },
+      "AssetActivityTypeSchema": {
+        "title": "AssetActivityTypeSchema",
+        "required": ["id", "name", "enum", "category_id"],
+        "type": "object",
+        "properties": {
+          "id": { "title": "Id", "type": "integer" },
+          "name": { "title": "Name", "type": "string" },
+          "enum": { "title": "Enum", "type": "string" },
+          "category_id": { "title": "Category Id", "type": "integer" }
+        }
+      },
+      "AssetDetailSchema": {
+        "title": "AssetDetailSchema",
+        "required": ["id", "customer_id", "tag_identifier"],
+        "type": "object",
+        "properties": {
+          "id": { "title": "Id", "type": "integer" },
+          "customer_id": { "title": "Customer Id", "type": "integer" },
+          "name": { "title": "Name", "type": "string" },
+          "tag_identifier": { "title": "Tag Identifier", "type": "string" },
+          "child_asset_type": {
+            "title": "Child Asset Type",
+            "type": "integer"
+          },
+          "operations": {
+            "title": "Operations",
+            "type": "array",
+            "items": { "type": "integer" },
+            "default": []
+          },
+          "fullness": { "title": "Fullness", "type": "number" },
+          "temperature": { "title": "Temperature", "type": "number" },
+          "installation_type_id": {
+            "title": "Installation Type Id",
+            "type": "integer"
+          },
+          "status_location_id": {
+            "title": "Status Location Id",
+            "type": "integer"
+          },
+          "status_location": { "title": "Status Location", "type": "string" },
+          "dynamic": { "title": "Dynamic", "type": "object" },
+          "location": { "title": "Location", "type": "object" },
+          "status_id": { "title": "Status Id", "type": "integer" },
+          "last_update_time": { "title": "Last Update Time", "type": "string" },
+          "last_data_time": { "title": "Last Data Time", "type": "string" }
+        }
+      },
+      "AssetInstallationTypeListSchema": {
+        "title": "AssetInstallationTypeListSchema",
+        "type": "object",
+        "properties": {
+          "items": {
+            "title": "Items",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AssetInstallationTypeSchema"
+            },
+            "default": []
+          }
+        }
+      },
+      "AssetInstallationTypeSchema": {
+        "title": "AssetInstallationTypeSchema",
+        "required": ["id", "name"],
+        "type": "object",
+        "properties": {
+          "id": { "title": "Id", "type": "integer" },
+          "name": { "title": "Name", "type": "string" }
+        }
+      },
+      "AssetListSchema": {
+        "title": "AssetListSchema",
+        "type": "object",
+        "properties": {
+          "items": {
+            "title": "Items",
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/AssetSchema" },
+            "default": []
+          },
+          "count": { "title": "Count", "type": "integer" }
+        }
+      },
+      "AssetLocationSchema": {
+        "title": "AssetLocationSchema",
+        "type": "object",
+        "properties": {
+          "latitude": { "title": "Latitude", "type": "number" },
+          "longitude": { "title": "Longitude", "type": "number" }
+        }
+      },
+      "AssetSchema": {
+        "title": "AssetSchema",
+        "required": ["id", "customer_id", "tag_identifier", "location"],
+        "type": "object",
+        "properties": {
+          "id": { "title": "Id", "type": "integer" },
+          "customer_id": { "title": "Customer Id", "type": "integer" },
+          "name": { "title": "Name", "type": "string" },
+          "tag_identifier": { "title": "Tag Identifier", "type": "string" },
+          "last_update_time": { "title": "Last Update Time", "type": "string" },
+          "last_data_time": { "title": "Last Data Time", "type": "string" },
+          "fullness": { "title": "Fullness", "type": "number" },
+          "location": { "$ref": "#/components/schemas/AssetLocationSchema" }
+        }
+      },
+      "AssetStatusListSchema": {
+        "title": "AssetStatusListSchema",
+        "type": "object",
+        "properties": {
+          "items": {
+            "title": "Items",
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/AssetStatusSchema" },
+            "default": []
+          }
+        }
+      },
+      "AssetStatusLocationListSchema": {
+        "title": "AssetStatusLocationListSchema",
+        "type": "object",
+        "properties": {
+          "items": {
+            "title": "Items",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AssetStatusLocationSchema"
+            },
+            "default": []
+          }
+        }
+      },
+      "AssetStatusLocationSchema": {
+        "title": "AssetStatusLocationSchema",
+        "required": ["id", "name"],
+        "type": "object",
+        "properties": {
+          "id": { "title": "Id", "type": "string" },
+          "name": { "title": "Name", "type": "string" }
+        }
+      },
+      "AssetStatusSchema": {
+        "title": "AssetStatusSchema",
+        "required": ["id", "name", "color"],
+        "type": "object",
+        "properties": {
+          "id": { "title": "Id", "type": "integer" },
+          "name": { "title": "Name", "type": "string" },
+          "color": { "title": "Color", "type": "string" },
+          "location": { "title": "Location", "type": "string" }
+        }
+      },
+      "AssetTypeListSchema": {
+        "title": "AssetTypeListSchema",
+        "type": "object",
+        "properties": {
+          "items": {
+            "title": "Items",
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/AssetTypeSchema" },
+            "default": []
+          }
+        }
+      },
+      "AssetTypeSchema": {
+        "title": "AssetTypeSchema",
+        "required": ["id", "name"],
+        "type": "object",
+        "properties": {
+          "id": { "title": "Id", "type": "integer" },
+          "name": { "title": "Name", "type": "string" },
+          "model": { "title": "Model", "type": "string" }
+        }
+      },
+      "AssetWasteTypeListSchema": {
+        "title": "AssetWasteTypeListSchema",
+        "type": "object",
+        "properties": {
+          "items": {
+            "title": "Items",
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/AssetWasteTypeSchema" },
+            "default": []
+          }
+        }
+      },
+      "AssetWasteTypeSchema": {
+        "title": "AssetWasteTypeSchema",
+        "required": ["id", "name", "color"],
+        "type": "object",
+        "properties": {
+          "id": { "title": "Id", "type": "integer" },
+          "name": { "title": "Name", "type": "string" },
+          "color": { "title": "Color", "type": "string" }
+        }
+      },
+      "AvailableDatesResponse": {
+        "title": "AvailableDatesResponse",
+        "type": "object",
+        "properties": {
+          "available_dates": {
+            "title": "Available Dates",
+            "type": "array",
+            "items": { "type": "string", "format": "date" }
+          }
+        }
+      },
+      "Body_create_activity_device_record_weighing_post": {
+        "title": "Body_create_activity_device_record_weighing_post",
+        "required": ["transaction_id"],
+        "type": "object",
+        "properties": {
+          "transaction_id": { "title": "Transaction Id", "type": "integer" },
+          "trace_id": { "title": "Trace Id", "type": "integer" },
+          "vehicle_identifier": {
+            "title": "Vehicle Identifier",
+            "type": "string"
+          },
+          "asset_identifier": { "title": "Asset Identifier", "type": "string" },
+          "gross_weight": { "title": "Gross Weight", "type": "number" },
+          "tare_weight": { "title": "Tare Weight", "type": "number" },
+          "net_weight": { "title": "Net Weight", "type": "number" },
+          "is_contaminated": { "title": "Is Contaminated", "type": "boolean" },
+          "gross_timestamp": { "title": "Gross Timestamp", "type": "string" },
+          "tare_timestamp": { "title": "Tare Timestamp", "type": "string" },
+          "media": { "title": "Media", "type": "string", "format": "binary" },
+          "waste_type_id": { "title": "Waste Type Id", "type": "integer" }
+        }
+      },
+      "Body_update_order_status_engagement_orders__order_id__status_put": {
+        "title": "Body_update_order_status_engagement_orders__order_id__status_put",
+        "required": ["status_id"],
+        "type": "object",
+        "properties": {
+          "status_id": {
+            "title": "Status Id",
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "CaseSubType": {
+        "title": "CaseSubType",
+        "required": ["id", "name"],
+        "type": "object",
+        "properties": {
+          "id": { "title": "Id", "type": "string" },
+          "name": { "title": "Name", "type": "string" }
+        }
+      },
+      "CaseType": {
+        "title": "CaseType",
+        "required": [
+          "id",
+          "name",
+          "must_have_sub_type",
+          "sub_type_list",
+          "location_type",
+          "service_point_types",
+          "is_entity_related",
+          "is_citizen_related"
+        ],
+        "type": "object",
+        "properties": {
+          "id": { "title": "Id", "type": "string" },
+          "name": { "title": "Name", "type": "string" },
+          "must_have_sub_type": {
+            "title": "Must Have Sub Type",
+            "type": "boolean"
+          },
+          "sub_type_list": {
+            "title": "Sub Type List",
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/CaseSubType" }
+          },
+          "location_type": {
+            "title": "Location Type",
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "service_point_types": {
+            "title": "Service Point Types",
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/ServicePointType" }
+          },
+          "is_entity_related": {
+            "title": "Is Entity Related",
+            "type": "boolean"
+          },
+          "is_citizen_related": {
+            "title": "Is Citizen Related",
+            "type": "boolean"
+          }
+        }
+      },
+      "CaseTypesResponse": {
+        "title": "CaseTypesResponse",
+        "required": ["items"],
+        "type": "object",
+        "properties": {
+          "items": {
+            "title": "Items",
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/CaseType" }
+          }
+        }
+      },
+      "ContactListSchema": {
+        "title": "ContactListSchema",
+        "type": "object",
+        "properties": {
+          "items": {
+            "title": "Items",
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/ContactSchema" },
+            "default": []
+          }
+        }
+      },
+      "ContactRequest": {
+        "title": "ContactRequest",
+        "required": ["entity_id", "name", "surname"],
+        "type": "object",
+        "properties": {
+          "entity_id": { "title": "Entity Id", "type": "string" },
+          "name": { "title": "Name", "type": "string" },
+          "surname": { "title": "Surname", "type": "string" },
+          "email": { "title": "Email", "type": "string" },
+          "phone": { "title": "Phone", "type": "string" },
+          "has_customer_portal": {
+            "title": "Has Customer Portal",
+            "type": "boolean"
+          },
+          "service_point_id_list": {
+            "title": "Service Point Id List",
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "dynamic_field_list": {
+            "title": "Dynamic Field List",
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/DynamicFieldInRequest" }
+          }
+        }
+      },
+      "ContactSchema": {
+        "title": "ContactSchema",
+        "required": ["id", "name", "surname", "service_point_id_list"],
+        "type": "object",
+        "properties": {
+          "id": { "title": "Id", "type": "string", "format": "uuid" },
+          "name": { "title": "Name", "type": "string" },
+          "surname": { "title": "Surname", "type": "string" },
+          "email": { "title": "Email", "type": "string" },
+          "phone": { "title": "Phone", "type": "string" },
+          "entity_id": {
+            "title": "Entity Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "has_customer_portal": {
+            "title": "Has Customer Portal",
+            "type": "boolean"
+          },
+          "service_point_id_list": {
+            "title": "Service Point Id List",
+            "type": "array",
+            "items": { "type": "string", "format": "uuid" }
+          },
+          "dynamic": { "title": "Dynamic", "type": "object" }
+        }
+      },
+      "CreateCaseRequest": {
+        "title": "CreateCaseRequest",
+        "required": ["type_id", "entity_id", "subject"],
+        "type": "object",
+        "properties": {
+          "name": { "title": "Name", "type": "string" },
+          "type_id": { "title": "Type Id", "type": "string" },
+          "sub_type_id": { "title": "Sub Type Id", "type": "string" },
+          "status_id": { "title": "Status Id", "type": "string" },
+          "entity_id": { "title": "Entity Id", "type": "string" },
+          "contact_id": { "title": "Contact Id", "type": "string" },
+          "service_point_id": { "title": "Service Point Id", "type": "string" },
+          "subject": { "title": "Subject", "type": "string" },
+          "description": { "title": "Description", "type": "string" },
+          "dynamic_field_list": {
+            "title": "Dynamic Field List",
+            "type": "array",
+            "items": { "type": "object" }
+          },
+          "assignee_id": { "title": "Assignee Id", "type": "integer" },
+          "corrective_action": {
+            "title": "Corrective Action",
+            "type": "string"
+          },
+          "notify_contact": { "title": "Notify Contact", "type": "boolean" },
+          "latitude": { "title": "Latitude", "type": "number" },
+          "longitude": { "title": "Longitude", "type": "number" }
+        }
+      },
+      "CreateContactResponse": {
+        "title": "CreateContactResponse",
+        "type": "object",
+        "properties": {
+          "contact_id": { "title": "Contact Id", "type": "string" },
+          "name": { "title": "Name", "type": "string" },
+          "surname": { "title": "Surname", "type": "string" },
+          "entity_name": { "title": "Entity Name", "type": "string" }
+        }
+      },
+      "DynamicFieldInRequest": {
+        "title": "DynamicFieldInRequest",
+        "required": ["key"],
+        "type": "object",
+        "properties": {
+          "key": { "title": "Key", "type": "string" },
+          "value": { "title": "Value" }
+        }
+      },
+      "DynamicFieldListSchema": {
+        "title": "DynamicFieldListSchema",
+        "type": "object",
+        "properties": {
+          "items": {
+            "title": "Items",
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/DynamicFieldSchema" },
+            "default": []
+          }
+        }
+      },
+      "DynamicFieldSchema": {
+        "title": "DynamicFieldSchema",
+        "required": [
+          "key",
+          "label",
+          "field_type",
+          "order",
+          "required",
+          "editable",
+          "displayable",
+          "cp_user_allowed"
+        ],
+        "type": "object",
+        "properties": {
+          "key": { "title": "Key", "type": "string" },
+          "label": { "title": "Label", "type": "string" },
+          "default_value": { "title": "Default Value" },
+          "field_type": { "title": "Field Type", "type": "string" },
+          "order": { "title": "Order", "type": "integer" },
+          "options": {
+            "title": "Options",
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/DynamicOptionSchema" },
+            "default": []
+          },
+          "required": { "title": "Required", "type": "boolean" },
+          "editable": { "title": "Editable", "type": "boolean" },
+          "displayable": { "title": "Displayable", "type": "boolean" },
+          "cp_user_allowed": { "title": "Cp User Allowed", "type": "boolean" },
+          "type_id": { "title": "Type Id", "type": "string", "format": "uuid" }
+        }
+      },
+      "DynamicOptionSchema": {
+        "title": "DynamicOptionSchema",
+        "required": ["label", "value"],
+        "type": "object",
+        "properties": {
+          "label": { "title": "Label", "type": "string" },
+          "value": { "title": "Value", "type": "integer" }
+        }
+      },
+      "EntityDetailsSchema": {
+        "title": "EntityDetailsSchema",
+        "required": ["id", "name", "type_id", "status_id"],
+        "type": "object",
+        "properties": {
+          "id": { "title": "Id", "type": "string", "format": "uuid" },
+          "name": { "title": "Name", "type": "string" },
+          "type_id": { "title": "Type Id", "type": "string", "format": "uuid" },
+          "type_name": { "title": "Type Name", "type": "string" },
+          "status_id": {
+            "title": "Status Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "dynamic": { "title": "Dynamic", "type": "object" },
+          "linked_service_points": {
+            "title": "Linked Service Points",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LinkedServicePointSchema"
+            },
+            "default": []
+          }
+        }
+      },
+      "EntityListSchema": {
+        "title": "EntityListSchema",
+        "type": "object",
+        "properties": {
+          "items": {
+            "title": "Items",
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/EntitySchema" },
+            "default": []
+          }
+        }
+      },
+      "EntitySchema": {
+        "title": "EntitySchema",
+        "required": ["id", "name", "type_id", "type_name", "status_id"],
+        "type": "object",
+        "properties": {
+          "id": { "title": "Id", "type": "string", "format": "uuid" },
+          "name": { "title": "Name", "type": "string" },
+          "type_id": { "title": "Type Id", "type": "string", "format": "uuid" },
+          "type_name": { "title": "Type Name", "type": "string" },
+          "status_id": {
+            "title": "Status Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "dynamic": { "title": "Dynamic", "type": "object" }
+        }
+      },
+      "EntityStatusListSchema": {
+        "title": "EntityStatusListSchema",
+        "type": "object",
+        "properties": {
+          "items": {
+            "title": "Items",
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/EntityStatusSchema" },
+            "default": []
+          }
+        }
+      },
+      "EntityStatusSchema": {
+        "title": "EntityStatusSchema",
+        "required": ["id", "name", "color"],
+        "type": "object",
+        "properties": {
+          "id": { "title": "Id", "type": "string", "format": "uuid" },
+          "name": { "title": "Name", "type": "string" },
+          "color": { "title": "Color", "type": "string" }
+        }
+      },
+      "ExternalAvailableDatesRequest": {
+        "title": "ExternalAvailableDatesRequest",
+        "required": ["start_date"],
+        "type": "object",
+        "properties": {
+          "start_date": {
+            "title": "Start Date",
+            "type": "string",
+            "description": "The start date for querying available dates.",
+            "format": "date"
+          },
+          "end_date": {
+            "title": "End Date",
+            "type": "string",
+            "description": "The end date for querying available dates.",
+            "format": "date"
+          },
+          "order_type_id": {
+            "title": "Order Type Id",
+            "type": "string",
+            "description": "The ID of the order type."
+          },
+          "entity_id": {
+            "title": "Entity Id",
+            "type": "string",
+            "description": "The ID of the entity."
+          },
+          "service_point_id": {
+            "title": "Service Point Id",
+            "type": "string",
+            "description": "The ID of the service point."
+          }
+        }
+      },
+      "FinancialDetailListSchema": {
+        "title": "FinancialDetailListSchema",
+        "type": "object",
+        "properties": {
+          "items": {
+            "title": "Items",
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/FinancialDetailSchema" },
+            "default": []
+          }
+        }
+      },
+      "FinancialDetailSchema": {
+        "title": "FinancialDetailSchema",
+        "required": ["order_item_id", "order_item_name"],
+        "type": "object",
+        "properties": {
+          "order_item_id": {
+            "title": "Order Item Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "order_item_name": { "title": "Order Item Name", "type": "string" },
+          "order_item_rules": { "title": "Order Item Rules", "type": "string" },
+          "price": { "title": "Price", "type": "number" },
+          "market_share": { "title": "Market Share", "type": "number" },
+          "tax": { "title": "Tax", "type": "number" }
+        }
+      },
+      "FleetLocationRequest": {
+        "title": "FleetLocationRequest",
+        "required": ["device_identifier", "record_time", "location", "speed"],
+        "type": "object",
+        "properties": {
+          "vehicle_plate": { "title": "Vehicle Plate", "type": "string" },
+          "device_identifier": {
+            "title": "Device Identifier",
+            "type": "string"
+          },
+          "record_time": { "title": "Record Time", "type": "string" },
+          "location": { "$ref": "#/components/schemas/LocationData" },
+          "speed": { "title": "Speed", "type": "number" },
+          "accuracy": { "title": "Accuracy", "type": "number" },
+          "bearing": { "title": "Bearing", "type": "number" },
+          "battery": { "title": "Battery", "type": "number" }
+        }
+      },
+      "FleetWeighingRequest": {
+        "title": "FleetWeighingRequest",
+        "required": ["device_identifier", "record_time", "location", "weight"],
+        "type": "object",
+        "properties": {
+          "vehicle_plate": { "title": "Vehicle Plate", "type": "string" },
+          "device_identifier": {
+            "title": "Device Identifier",
+            "type": "string"
+          },
+          "record_time": { "title": "Record Time", "type": "string" },
+          "location": { "$ref": "#/components/schemas/LocationData" },
+          "weight": { "$ref": "#/components/schemas/WeightData" },
+          "tags": {
+            "title": "Tags",
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        }
+      },
+      "HTTPValidationError": {
+        "title": "HTTPValidationError",
+        "type": "object",
+        "properties": {
+          "detail": {
+            "title": "Detail",
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/ValidationError" }
+          }
+        }
+      },
+      "LinkedEntitySchema": {
+        "title": "LinkedEntitySchema",
+        "required": ["id", "name"],
+        "type": "object",
+        "properties": {
+          "id": { "title": "Id", "type": "string", "format": "uuid" },
+          "name": { "title": "Name", "type": "string" },
+          "type_id": { "title": "Type Id", "type": "string", "format": "uuid" }
+        }
+      },
+      "LinkedServicePointSchema": {
+        "title": "LinkedServicePointSchema",
+        "required": ["id", "name"],
+        "type": "object",
+        "properties": {
+          "id": { "title": "Id", "type": "string", "format": "uuid" },
+          "name": { "title": "Name", "type": "string" },
+          "type_id": { "title": "Type Id", "type": "string", "format": "uuid" }
+        }
+      },
+      "LocationData": {
+        "title": "LocationData",
+        "required": ["latitude", "longitude"],
+        "type": "object",
+        "properties": {
+          "latitude": { "title": "Latitude", "type": "number" },
+          "longitude": { "title": "Longitude", "type": "number" }
+        }
+      },
+      "OrderItemInRequest": {
+        "title": "OrderItemInRequest",
+        "required": ["id"],
+        "type": "object",
+        "properties": {
+          "id": { "title": "Id", "type": "string" },
+          "planned_quantity": {
+            "title": "Planned Quantity",
+            "type": "number",
+            "default": 0
+          }
+        }
+      },
+      "OrderRequest": {
+        "title": "OrderRequest",
+        "required": ["name", "type_id", "entity_id", "fulfillment_date"],
+        "type": "object",
+        "properties": {
+          "name": { "title": "Name", "type": "string" },
+          "type_id": { "title": "Type Id", "type": "string" },
+          "entity_id": { "title": "Entity Id", "type": "string" },
+          "service_point_id": { "title": "Service Point Id", "type": "string" },
+          "latitude": { "title": "Latitude", "type": "number" },
+          "longitude": { "title": "Longitude", "type": "number" },
+          "fulfillment_date": {
+            "title": "Fulfillment Date",
+            "type": "string",
+            "format": "date-time"
+          },
+          "order_item_list": {
+            "title": "Order Item List",
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/OrderItemInRequest" },
+            "default": []
+          },
+          "dynamic_field_list": {
+            "title": "Dynamic Field List",
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/DynamicFieldInRequest" },
+            "default": []
+          }
+        }
+      },
+      "OrderSchema": {
+        "title": "OrderSchema",
+        "required": ["order_id"],
+        "type": "object",
+        "properties": { "order_id": { "title": "Order Id", "type": "string" } }
+      },
+      "OrderSettingsItemSchema": {
+        "title": "OrderSettingsItemSchema",
+        "required": ["id", "name", "order_type_id"],
+        "type": "object",
+        "properties": {
+          "id": { "title": "Id", "type": "string", "format": "uuid" },
+          "name": { "title": "Name", "type": "string" },
+          "order_type_id": {
+            "title": "Order Type Id",
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "OrderSettingsListSchema": {
+        "title": "OrderSettingsListSchema",
+        "type": "object",
+        "properties": {
+          "order_types": {
+            "title": "Order Types",
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/OrderSettingsTypeSchema" },
+            "default": []
+          },
+          "order_items": {
+            "title": "Order Items",
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/OrderSettingsItemSchema" },
+            "default": []
+          }
+        }
+      },
+      "OrderSettingsTypeSchema": {
+        "title": "OrderSettingsTypeSchema",
+        "required": ["id", "name", "template_id"],
+        "type": "object",
+        "properties": {
+          "id": { "title": "Id", "type": "string", "format": "uuid" },
+          "name": { "title": "Name", "type": "string" },
+          "template_id": {
+            "title": "Template Id",
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "ServicePointDetailsSchema": {
+        "title": "ServicePointDetailsSchema",
+        "required": ["id", "name", "type_id", "status_id"],
+        "type": "object",
+        "properties": {
+          "id": { "title": "Id", "type": "string", "format": "uuid" },
+          "name": { "title": "Name", "type": "string" },
+          "address": { "title": "Address", "type": "string" },
+          "latitude": { "title": "Latitude", "type": "number" },
+          "longitude": { "title": "Longitude", "type": "number" },
+          "type_id": { "title": "Type Id", "type": "string", "format": "uuid" },
+          "type_name": { "title": "Type Name", "type": "string" },
+          "status_id": {
+            "title": "Status Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "dynamic": { "title": "Dynamic", "type": "object" },
+          "linked_entities": {
+            "title": "Linked Entities",
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/LinkedEntitySchema" },
+            "default": []
+          }
+        }
+      },
+      "ServicePointListSchema": {
+        "title": "ServicePointListSchema",
+        "type": "object",
+        "properties": {
+          "items": {
+            "title": "Items",
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/ServicePointSchema" },
+            "default": []
+          }
+        }
+      },
+      "ServicePointSchema": {
+        "title": "ServicePointSchema",
+        "required": ["id", "name", "type_id", "type_name", "status_id"],
+        "type": "object",
+        "properties": {
+          "id": { "title": "Id", "type": "string", "format": "uuid" },
+          "name": { "title": "Name", "type": "string" },
+          "type_id": { "title": "Type Id", "type": "string", "format": "uuid" },
+          "type_name": { "title": "Type Name", "type": "string" },
+          "status_id": {
+            "title": "Status Id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "dynamic": { "title": "Dynamic", "type": "object" },
+          "address": { "title": "Address", "type": "string" },
+          "latitude": { "title": "Latitude", "type": "number" },
+          "longitude": { "title": "Longitude", "type": "number" }
+        }
+      },
+      "ServicePointStatusListSchema": {
+        "title": "ServicePointStatusListSchema",
+        "type": "object",
+        "properties": {
+          "items": {
+            "title": "Items",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ServicePointStatusSchema"
+            },
+            "default": []
+          }
+        }
+      },
+      "ServicePointStatusSchema": {
+        "title": "ServicePointStatusSchema",
+        "required": ["id", "name", "color"],
+        "type": "object",
+        "properties": {
+          "id": { "title": "Id", "type": "string", "format": "uuid" },
+          "name": { "title": "Name", "type": "string" },
+          "color": { "title": "Color", "type": "string" }
+        }
+      },
+      "ServicePointType": {
+        "title": "ServicePointType",
+        "required": ["id", "name"],
+        "type": "object",
+        "properties": {
+          "id": { "title": "Id", "type": "string" },
+          "name": { "title": "Name", "type": "string" }
+        }
+      },
+      "UpdateContactRequest": {
+        "title": "UpdateContactRequest",
+        "type": "object",
+        "properties": {
+          "entity_id": { "title": "Entity Id", "type": "string" },
+          "name": { "title": "Name", "type": "string" },
+          "surname": { "title": "Surname", "type": "string" },
+          "email": { "title": "Email", "type": "string" },
+          "phone": { "title": "Phone", "type": "string" },
+          "has_customer_portal": {
+            "title": "Has Customer Portal",
+            "type": "boolean"
+          },
+          "service_point_id_list": {
+            "title": "Service Point Id List",
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "dynamic_field_list": {
+            "title": "Dynamic Field List",
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/DynamicFieldInRequest" }
+          }
+        }
+      },
+      "ValidationError": {
+        "title": "ValidationError",
+        "required": ["loc", "msg", "type"],
+        "type": "object",
+        "properties": {
+          "loc": {
+            "title": "Location",
+            "type": "array",
+            "items": { "anyOf": [{ "type": "string" }, { "type": "integer" }] }
+          },
+          "msg": { "title": "Message", "type": "string" },
+          "type": { "title": "Error Type", "type": "string" }
+        }
+      },
+      "WasteTypeListSchema": {
+        "title": "WasteTypeListSchema",
+        "type": "object",
+        "properties": {
+          "items": {
+            "title": "Items",
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/WasteTypeSchema" },
+            "default": []
+          }
+        }
+      },
+      "WasteTypeSchema": {
+        "title": "WasteTypeSchema",
+        "required": ["waste_type_id", "waste_type_name"],
+        "type": "object",
+        "properties": {
+          "waste_type_id": { "title": "Waste Type Id", "type": "integer" },
+          "waste_type_name": { "title": "Waste Type Name", "type": "string" }
+        }
+      },
+      "WeightData": {
+        "title": "WeightData",
+        "required": ["net"],
+        "type": "object",
+        "properties": {
+          "gross": { "title": "Gross", "type": "number" },
+          "tare": { "title": "Tare", "type": "number" },
+          "net": { "title": "Net", "type": "number" }
+        }
+      },
+      "modules__device__activity__schemas__TraceResponse": {
+        "title": "TraceResponse",
+        "required": ["trace_id"],
+        "type": "object",
+        "properties": { "trace_id": { "title": "Trace Id", "type": "string" } }
+      },
+      "modules__fleet__schemas__TraceResponse": {
+        "title": "TraceResponse",
+        "required": ["trace_id"],
+        "type": "object",
+        "properties": { "trace_id": { "title": "Trace Id", "type": "string" } }
+      }
+    },
+    "securitySchemes": {
+      "OAuth2PasswordBearer": {
+        "type": "oauth2",
+        "flows": {
+          "password": {
+            "scopes": { "profile": "Read your profile" },
+            "tokenUrl": "https://360-int02.evreka.co/auth/oauth/token"
+          }
+        }
+      }
+    }
+  }
+}
